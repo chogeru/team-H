@@ -82,6 +82,8 @@ void MainLoop(void) {
 			) {
 			//’µ‚Ë•Ô‚é
 			ball_vec.y *= -1;
+			//“–‚½‚Á‚½Žž‰¹
+			SOUND("SE_game")->Play();
 			//‰Á‘¬
 			//ball_vec *= 1.1f;
 		}
@@ -130,6 +132,8 @@ void MainLoop(void) {
 		ball.Load("Image/ball.png");
 		//ƒo[‚Ì“Ç‚Ýž‚Ý
 		bar.Load("Image/bar.png");
+		SOUND("SE_game")->Load("sound/SE_game.wav", 10);
+
 
 	}
 

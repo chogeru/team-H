@@ -18,7 +18,7 @@ CVector2D ball_vec(4, 4);
 //バーの画像オブジェクト
 CImage bar;
 //バーの座標
-CVector2D bar_pos = { CVector2D(0,300) };
+CVector2D bar_pos = { CVector2D(600,650) };
 
 //ゲームの状態（0:ポーズ,1:ゲーム中)
 int game_state = 0;
@@ -47,11 +47,11 @@ void MainLoop(void) {
 			ball_vec.x *= -1;
 		}
 		//バーの下移動
-		if (HOLD(CInput::eDown)) {
+		if (HOLD(CInput::eRight)) {
 			bar_pos.x += 8;
 		}
 		//バーの上移動
-		if (HOLD(CInput::eUp)) {
+		if (HOLD(CInput::eLeft)) {
 			bar_pos.x -= 8;
 		}
 		//ボールの表示位置を設定
@@ -66,6 +66,25 @@ void MainLoop(void) {
 		//バーの描画
 		bar.Draw();
 
+		if (ball_pos.y > 680) {
+			//ボールの位置を中央にセット
+			ball_pos = CVector2D(600, 300);
+			//移動量もリセット
+			ball_vec = CVector2D(-4, 4);
+			//ポーズ状態へ
+			game_state = 0;
+		}
+		//bar当たり判定
+		if (bar_pos.y + 32 > ball_pos.y &&
+			bar_pos.y < ball_pos.y + 32 &&
+			bar_pos.x + 128 > ball_pos.x &&
+			bar_pos.x < ball_pos.x + 32
+			) {
+			//跳ね返る
+			ball_vec.y *= -1;
+			//加速
+			//ball_vec *= 1.1f;
+		}
 	}
 
 

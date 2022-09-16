@@ -15,6 +15,7 @@ CImage ball;
 CVector2D ball_pos(600, 300);
 //ボールの移動ベクトル
 CVector2D ball_vec(4, 4);
+CVector2D bar_vec(4, 4);
 //バーの画像オブジェクト
 CImage bar;
 //バーの座標
@@ -51,12 +52,14 @@ void MainLoop(void) {
 		}
 		//バーの下移動
 		if (HOLD(CInput::eRight)) {
-			bar_pos.x += 8;
+			bar_pos.x += 16;
 		}
+		
 		//バーの上移動
 		if (HOLD(CInput::eLeft)) {
-			bar_pos.x -= 8;
+			bar_pos.x -= 16;
 		}
+		
 		//ボールの表示位置を設定
 		ball.SetPos(ball_pos);
 		//ボールの表示サイズを設定
@@ -87,9 +90,10 @@ void MainLoop(void) {
 			//跳ね返る
 			ball_vec.y *= -1;
 			//当たった時音
-			SOUND("SE_game")->Play();
+			SOUND("SE_Hit")->Play();
 			//加速
-			//ball_vec *= 1.1f;
+			ball_vec *= 1.1f;
+			
 		}
 	}
 
@@ -137,8 +141,11 @@ void MainLoop(void) {
 		//バーの読み込み
 		bar.Load("Image/R.png");
 		Title.Load("Image/Title.png");
+		SOUND("SE_Hit")->Load("Sound/SE/Hit.wav", 10);
 
-		SOUND("SE_game")->Load("sound/SE_game.wav", 10);
+		SOUND("BGM_Game")->Load("Sound/BGM/Game.wav");
+		//BGM　ループ再生
+		SOUND("BGM_Game")->Play(true);
 
 
 	}

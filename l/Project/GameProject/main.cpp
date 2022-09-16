@@ -5,7 +5,6 @@
 
 
 
-
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
@@ -62,6 +61,28 @@ void MainLoop(void) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	switch (game_state) {
 	case 0:
 		//ポーズ中の更新処理
@@ -103,6 +124,7 @@ void MainLoop(void) {
 		bar.SetPos(bar_pos);
 		//バーの描画
 		bar.Draw();
+	
 		
 
 		if (ball_pos.y > 680) {
@@ -124,7 +146,7 @@ void MainLoop(void) {
 			//当たった時音
 			SOUND("SE_Hit")->Play();
 			//加速
-			ball_vec *= 1.1f;
+			ball_vec *= 0.3f;
 			
 		}
 	}

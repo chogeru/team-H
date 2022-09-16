@@ -135,7 +135,7 @@ void MainLoop(void) {
 		//ボールの読み込み
 		ball.Load("Image/ball.png");
 		//バーの読み込み
-		bar.Load("Image/bar.png");
+		bar.Load("Image/R.png");
 		Title.Load("Image/Title.png");
 
 		SOUND("SE_game")->Load("sound/SE_game.wav", 10);

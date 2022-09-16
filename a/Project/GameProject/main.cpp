@@ -19,7 +19,8 @@ CVector2D ball_vec(4, 4);
 CImage bar;
 //バーの座標
 CVector2D bar_pos = { CVector2D(600,650) };
-
+CImage Title;
+CVector2D Title_pos = { CVector2D(600,650) };
 //ゲームの状態（0:ポーズ,1:ゲーム中)
 int game_state = 0;
 
@@ -33,6 +34,8 @@ void MainLoop(void) {
 		//ポーズ中の更新処理
 		if (PUSH(CInput::eButton10))
 			game_state = 1;
+		Title.Draw();
+
 		break;
 	case 1:
 		//ゲーム中の更新処理
@@ -65,6 +68,7 @@ void MainLoop(void) {
 		bar.SetPos(bar_pos);
 		//バーの描画
 		bar.Draw();
+		
 
 		if (ball_pos.y > 680) {
 			//ボールの位置を中央にセット
@@ -132,6 +136,8 @@ void MainLoop(void) {
 		ball.Load("Image/ball.png");
 		//バーの読み込み
 		bar.Load("Image/bar.png");
+		Title.Load("Image/Title.png");
+
 		SOUND("SE_game")->Load("sound/SE_game.wav", 10);
 
 

@@ -9,63 +9,110 @@
 //--------------------------------------------
 //グローバル変数領域
 //--------------------------------------------
+//ボールの画像オブジェクト
+CImage ball;
+//ボールの座標
+CVector2D ball_pos(600, 300);
+//ボールの移動ベクトル
+CVector2D ball_vec(4, 4);
+//バーの画像オブジェクト
+CImage bar;
+//バーの座標
+CVector2D bar_pos = { CVector2D(0,300) };
 
-
-
+//ゲームの状態（0:ポーズ,1:ゲーム中)
+int game_state = 0;
 
 void MainLoop(void) {
 	//--------------------------------------------------------------
 	//ゲーム中の動きはここに書く
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
+	switch (game_state) {
+	case 0:
+		//ポーズ中の更新処理
+		if (PUSH(CInput::eButton10))
+			game_state = 1;
+		break;
+	case 1:
+		//ゲーム中の更新処理
+		//ボールの移動
+		ball_pos += ball_vec;
+		//上下の反射
+		if (ball_pos.y < 0 || ball_pos.y > 720 - 32) {
+			ball_vec.y *= -1;
+		}
+		//左右の反射
+		if (ball_pos.x < 0 || ball_pos.x > 1280 - 32) {
+			ball_vec.x *= -1;
+		}
+		//バーの下移動
+		if (HOLD(CInput::eDown)) {
+			bar_pos.x += 8;
+		}
+		//バーの上移動
+		if (HOLD(CInput::eUp)) {
+			bar_pos.x -= 8;
+		}
+		//ボールの表示位置を設定
+		ball.SetPos(ball_pos);
+		//ボールの表示サイズを設定
+		ball.SetSize(32, 32);
+		//ボールを描画
+		ball.Draw();
+		
+		//バーの表示位置を設定
+		bar.SetPos(bar_pos);
+		//バーの描画
+		bar.Draw();
 
-
-
-
-}
-void Init(void)
-{
-
-	CFPS::SetFPS(60);
-	//フレーム制御初期化
-	CFPS::Init();
-	//ボタンの設定
-	CInput::Init();
-	CInput::SetButton(0, CInput::eButton1, 'Z');
-	CInput::SetButton(0, CInput::eButton2, 'X');
-	CInput::SetButton(0, CInput::eButton3, 'C');
-	CInput::SetButton(0, CInput::eButton4, 'V');
-	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
-	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
-	CInput::SetButton(0, CInput::eUp, VK_UP);
-	CInput::SetButton(0, CInput::eDown, VK_DOWN);
-	CInput::SetButton(0, CInput::eLeft, VK_LEFT);
-	CInput::SetButton(0, CInput::eRight, VK_RIGHT);
-	CInput::SetButton(0, CInput::eMouseL, VK_LBUTTON);
-	CInput::SetButton(0, CInput::eMouseR, VK_RBUTTON);
-	CInput::SetButton(0, CInput::eMouseC, VK_MBUTTON);
-	//	CInput::SetMouseInside(true);
-	//	CInput::ShowCursor(false);
-	CInput::Update();
-	CInput::Update();
-
-
-
-	SetCurrentDirectory("data");
-	CSound::GetInstance();
-
-	//-----------------------------------------------------
-	//初期化の命令を書く
-	//ゲーム起動時に一度だけ呼ばれる
-	//-----------------------------------------------------
-	
-
-
-
+	}
 
 
 
 }
+
+	void Init(void)
+	{
+
+		CFPS::SetFPS(60);
+		//フレーム制御初期化
+		CFPS::Init();
+		//ボタンの設定
+		CInput::Init();
+		CInput::SetButton(0, CInput::eButton1, 'Z');
+		CInput::SetButton(0, CInput::eButton2, 'X');
+		CInput::SetButton(0, CInput::eButton3, 'C');
+		CInput::SetButton(0, CInput::eButton4, 'V');
+		CInput::SetButton(0, CInput::eButton5, VK_SPACE);
+		CInput::SetButton(0, CInput::eButton10, VK_RETURN);
+		CInput::SetButton(0, CInput::eUp, VK_UP);
+		CInput::SetButton(0, CInput::eDown, VK_DOWN);
+		CInput::SetButton(0, CInput::eLeft, VK_LEFT);
+		CInput::SetButton(0, CInput::eRight, VK_RIGHT);
+		CInput::SetButton(0, CInput::eMouseL, VK_LBUTTON);
+		CInput::SetButton(0, CInput::eMouseR, VK_RBUTTON);
+		CInput::SetButton(0, CInput::eMouseC, VK_MBUTTON);
+		//	CInput::SetMouseInside(true);
+		//	CInput::ShowCursor(false);
+		CInput::Update();
+		CInput::Update();
+
+
+
+		SetCurrentDirectory("data");
+		CSound::GetInstance();
+
+		//-----------------------------------------------------
+		//初期化の命令を書く
+		//ゲーム起動時に一度だけ呼ばれる
+		//-----------------------------------------------------
+		//ボールの読み込み
+		ball.Load("Image/ball.png");
+		//バーの読み込み
+		bar.Load("Image/bar.png");
+
+	}
 
 
 void Release()

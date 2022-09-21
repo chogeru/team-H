@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\haya7\Desktop\team H\team-H\二―アのおしり\Project\GameProject\main.cpp(228,42): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\haya7\Desktop\team H\team-H\二―アのおしり\Project\GameProject\main.cpp(228,39): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+LINK : fatal error LNK1201: プログラム データベース 'C:\Users\haya7\Desktop\team H\team-H\二―アのおしり\Game\GameProject.pdb' に書き込み中にエラーが発生しました。ディスク容量の不足、無効なパス、または特権の不足が原因でないことを確認してください。

@@ -18,6 +18,8 @@ CVector2D bar_vec(4, 4);
 //バーの画像オブジェクト
 CImage bar;
 //バーの座標
+CImage hai;
+CVector2D hai_pos = { CVector2D(600,650) };
 CVector2D bar_pos = { CVector2D(600,650) };
 CImage Title;
 CVector2D Title_pos = { CVector2D(600,650) };
@@ -92,6 +94,7 @@ void MainLoop(void) {
 
 		break;
 	case 1:
+		hai.Draw();
 		//ゲーム中の更新処理
 		//ボールの移動
 		ball_pos += ball_vec;
@@ -192,6 +195,7 @@ void MainLoop(void) {
 		//-----------------------------------------------------
 		//ボールの読み込み
 		ball.Load("Image/ball.png");
+		hai.Load("Image/h.png");
 		//バーの読み込み
 		bar.Load("Image/R.png");
 		Title.Load("Image/Title.png");

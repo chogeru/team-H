@@ -20,6 +20,10 @@ CImage buloku7;
 CImage buloku8;
 CImage buloku9;
 CImage buloku10;
+CImage buloku11;
+CImage buloku12;
+CImage buloku13;
+CImage buloku14;
 
 int furagu1=1;
 int furagu2 = 1;
@@ -31,20 +35,27 @@ int furagu7 = 1;
 int furagu8 = 1;
 int furagu9 = 1;
 int furagu10 = 1;
+int furagu11 = 1;
+int furagu12 = 1;
+int furagu13 = 1;
+int furagu14 = 1;
 
 //ボールの座標
 CVector2D ball_pos(100, 100);
-CVector2D buloku1_pos(100, 700);
-CVector2D buloku2_pos(300, 700);
-CVector2D buloku3_pos(500, 700);
-CVector2D buloku4_pos(700, 700);
-CVector2D buloku5_pos(800, 700);
-CVector2D buloku6_pos(1000, 700);
-CVector2D buloku7_pos(1280, 700);
-CVector2D buloku8_pos(300, 500);
-CVector2D buloku9_pos(500, 500);
-CVector2D buloku10_pos(700, 500);
-
+CVector2D buloku1_pos(300, 200);
+CVector2D buloku2_pos(400, 200);
+CVector2D buloku3_pos(500, 200);
+CVector2D buloku4_pos(600, 200);
+CVector2D buloku5_pos(700, 200);
+CVector2D buloku6_pos(800, 200);
+CVector2D buloku7_pos(900, 200);
+CVector2D buloku8_pos(300, 300);
+CVector2D buloku9_pos(400, 300);
+CVector2D buloku10_pos(500, 300);
+CVector2D buloku11_pos(600, 300);
+CVector2D buloku12_pos(700, 300);
+CVector2D buloku13_pos(800, 300);
+CVector2D buloku14_pos(900, 300);
 //ボールの移動ベクトル
 CVector2D ball_vec(4, 4);
 CVector2D bar_vec(4, 4);
@@ -188,6 +199,27 @@ void MainLoop(void) {
 			buloku10.SetSize(100, 100);
 			buloku10.Draw();
 		}
+		if (furagu11 == 1) {
+			buloku11.SetPos(buloku11_pos);
+			buloku11.SetSize(100, 100);
+			buloku11.Draw();
+		}
+		if (furagu12 == 1) {
+			buloku12.SetPos(buloku12_pos);
+			buloku12.SetSize(100, 100);
+			buloku12.Draw();
+		}
+		if (furagu13 == 1) {
+			buloku13.SetPos(buloku13_pos);
+			buloku13.SetSize(100, 100);
+			buloku13.Draw();
+		}
+		if (furagu14 == 1) {
+			buloku14.SetPos(buloku14_pos);
+			buloku14.SetSize(100, 100);
+			buloku14.Draw();
+		}
+
 		if (ball_pos.y > 680) {
 			//ボールの位置を中央にセット
 			ball_pos = CVector2D(600, 300);
@@ -275,11 +307,29 @@ void MainLoop(void) {
 				furagu10 = 0;
 
 
+			if (buloku11_pos.y + 100 > ball_pos.y &&
+				buloku11_pos.y < ball_pos.y + 32 &&
+				buloku11_pos.x + 100 > ball_pos.x &&
+				buloku11_pos.x < ball_pos.x + 32)
+				furagu11 = 0;
 
+			if (buloku12_pos.y + 100 > ball_pos.y &&
+				buloku12_pos.y < ball_pos.y + 32 &&
+				buloku12_pos.x + 100 > ball_pos.x &&
+				buloku12_pos.x < ball_pos.x + 32)
+				furagu12 = 0;
 
+			if (buloku13_pos.y + 100 > ball_pos.y &&
+				buloku13_pos.y < ball_pos.y + 32 &&
+				buloku13_pos.x + 100 > ball_pos.x &&
+				buloku13_pos.x < ball_pos.x + 32)
+				furagu13 = 0;
 
-
-
+			if (buloku14_pos.y + 100 > ball_pos.y &&
+				buloku14_pos.y < ball_pos.y + 32 &&
+				buloku14_pos.x + 100 > ball_pos.x &&
+				buloku14_pos.x < ball_pos.x + 32)
+				furagu14 = 0;
 
 	}
 
@@ -340,7 +390,10 @@ void MainLoop(void) {
 		buloku8.Load("Image/buloku.png");
 		buloku9.Load("Image/buloku.png");
 		buloku10.Load("Image/buloku.png");
-
+		buloku11.Load("Image/buloku.png");
+		buloku12.Load("Image/buloku.png");
+		buloku13.Load("Image/buloku.png");
+		buloku14.Load("Image/buloku.png");
 
 
 

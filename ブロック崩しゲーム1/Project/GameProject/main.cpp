@@ -56,6 +56,26 @@ CVector2D buloku11_pos(600, 300);
 CVector2D buloku12_pos(700, 300);
 CVector2D buloku13_pos(800, 300);
 CVector2D buloku14_pos(900, 300);
+
+CVector2D buloku1_Vec;
+CVector2D buloku2_Vec;
+CVector2D buloku3_Vec;
+CVector2D buloku4_Vec;
+CVector2D buloku5_Vec;
+CVector2D buloku6_Vec;
+CVector2D buloku7_Vec;
+CVector2D buloku8_Vec;
+CVector2D buloku9_Vec;
+CVector2D buloku10_Vec;
+CVector2D buloku11_Vec;
+CVector2D buloku12_Vec;
+CVector2D buloku13_Vec;
+CVector2D buloku14_Vec;
+
+
+
+
+
 //ボールの移動ベクトル
 CVector2D ball_vec(4, 4);
 CVector2D bar_vec(4, 4);
@@ -249,7 +269,7 @@ void MainLoop(void) {
 				buloku1_pos.x + 100 > ball_pos.x &&
 				buloku1_pos.x < ball_pos.x + 32)
 				furagu1 = 0;
-				
+	
 
 			if (buloku2_pos.y + 100 > ball_pos.y &&
 				buloku2_pos.y < ball_pos.y + 32 &&
